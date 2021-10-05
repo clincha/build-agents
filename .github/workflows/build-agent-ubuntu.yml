@@ -16,15 +16,15 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
           image: clincha/build-agent-ubuntu
-          tags: latest, ${{ github.run_id }}
+          tags: latest, v1.0
           registry: docker.io
-          dockerfile: Dockerfile
-          directory: .
+          dockerfile: ubuntu/Dockerfile
+          directory: ubuntu
           username: clincha
           password: ${{ secrets.DOCKER_PASSWORD }}
           buildArgs: GH_PAT_TOKEN=${{ secrets.GH_PAT_TOKEN }}
 
-  deploy-agents:
+  deploy-agents-clinch-home:
     runs-on: self-hosted
     needs: build-image
     steps:
@@ -39,4 +39,21 @@ jobs:
           write-mode: overwrite
 
       - name: kubectl
-        run: kubectl apply -f build-agent-ubuntu.yml --kubeconfig ./kubeconfig
+        run: kubectl apply -f deployments/ubuntu-clinch-home.yml --kubeconfig ./kubeconfig
+
+  deploy-agents-build-agents:
+    runs-on: self-hosted
+    needs: build-image
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Create kubeconfig file
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: ./kubeconfig
+          contents: ${{ secrets.KUBECONFIG }}
+          write-mode: overwrite
+
+      - name: kubectl
+        run: kubectl apply -f deployments/ubuntu-build-agents.yml --kubeconfig ./kubeconfig

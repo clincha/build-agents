@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ubuntu-build-agents
+  name: ubuntu-build-agents
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ubuntu-build-agents
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: ubuntu-build-agents
+    spec:
+      containers:
+        - image: clincha/ubuntu-build-agents:latest
+          name: ubuntu-build-agents
+          resources: {}
+          env:
+            - name: GH_REPOSITORY
+              value: "https://github.com/clincha/build-agents"
+            - name: GITHUB_OWNER
+              value: "clincha"
+            - name: GITHUB_REPOSITORY
+              value: "build-agents"
