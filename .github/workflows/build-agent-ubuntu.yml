@@ -1,4 +1,4 @@
-name: Create build agents on local Kubernetes cluser
+name: build-agents
 
 on:
   push:
