@@ -39,21 +39,4 @@ jobs:
           write-mode: overwrite
 
       - name: kubectl
-        run: kubectl apply -f deployments/ubuntu-clinch-home.yml --kubeconfig ./kubeconfig
-
-  deploy-agents-build-agents:
-    runs-on: self-hosted
-    needs: build-image
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
-
-      - name: Create kubeconfig file
-        uses: DamianReeves/write-file-action@v1.0
-        with:
-          path: ./kubeconfig
-          contents: ${{ secrets.KUBECONFIG }}
-          write-mode: overwrite
-
-      - name: kubectl
-        run: kubectl apply -f deployments/ubuntu-build-agents.yml --kubeconfig ./kubeconfig
+        run: kubectl apply -f ./deployments --kubeconfig ./kubeconfig

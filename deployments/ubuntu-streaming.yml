@@ -3,27 +3,27 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: ubuntu-build-agents
-  name: ubuntu-build-agents
+    app: ubuntu-streaming
+  name: ubuntu-streaming
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ubuntu-build-agents
+      app: ubuntu-streaming
   strategy: {}
   template:
     metadata:
       labels:
-        app: ubuntu-build-agents
+        app: ubuntu-streaming
     spec:
       containers:
         - image: clincha/build-agent-ubuntu:latest
-          name: ubuntu-build-agents
+          name: ubuntu-streaming
           resources: {}
           env:
             - name: GH_REPOSITORY
-              value: "https://github.com/clincha/build-agents"
+              value: "https://github.com/clincha/streaming"
             - name: GITHUB_OWNER
               value: "clincha"
             - name: GITHUB_REPOSITORY
-              value: "build-agents"
+              value: "streaming"
