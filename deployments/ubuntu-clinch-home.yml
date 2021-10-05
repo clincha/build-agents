@@ -17,7 +17,7 @@ spec:
         app: ubuntu-clinch-home
     spec:
       containers:
-        - image: clincha/ubuntu-build-agents:latest
+        - image: clincha/build-agent-ubuntu:latest
           name: ubuntu-clinch-home
           resources: {}
           env:

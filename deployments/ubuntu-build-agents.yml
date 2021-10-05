@@ -17,7 +17,7 @@ spec:
         app: ubuntu-build-agents
     spec:
       containers:
-        - image: clincha/ubuntu-build-agents:latest
+        - image: clincha/build-agent-ubuntu:latest
           name: ubuntu-build-agents
           resources: {}
           env:
