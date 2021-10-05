@@ -18,8 +18,8 @@ jobs:
           image: clincha/build-agent-ubuntu
           tags: latest, ${{ github.run_id }}
           registry: docker.io
-          dockerfile: Kubernetes/build-agents/Dockerfile
-          directory: Kubernetes/build-agents
+          dockerfile: Dockerfile
+          directory: .
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           buildArgs: GH_PAT_TOKEN=${{ secrets.GH_PAT_TOKEN }}
