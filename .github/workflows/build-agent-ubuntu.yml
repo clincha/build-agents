@@ -1,0 +1,42 @@
+name: Create build agents on local Kubernetes cluser
+
+on:
+  push:
+  schedule:
+    - cron: '0 2 * * *'
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Docker Build, Tag & Push
+        uses: mr-smithers-excellent/docker-build-push@v5
+        with:
+          image: clincha/build-agent-ubuntu
+          tags: latest, ${{ github.run_id }}
+          registry: docker.io
+          dockerfile: Kubernetes/build-agents/Dockerfile
+          directory: Kubernetes/build-agents
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          buildArgs: GH_PAT_TOKEN=${{ secrets.GH_PAT_TOKEN }}
+
+  deploy-agents:
+    runs-on: self-hosted
+    needs: build-image
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Create kubeconfig file
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: ./kubeconfig
+          contents: ${{ secrets.KUBECONFIG }}
+          write-mode: overwrite
+
+      - name: kubectl
+        run: kubectl apply -f Kubernetes/Manifests/build-agent-ubuntu.yml --kubeconfig ./kubeconfig
