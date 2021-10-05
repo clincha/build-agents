@@ -20,7 +20,7 @@ jobs:
           registry: docker.io
           dockerfile: Dockerfile
           directory: .
-          username: ${{ secrets.DOCKER_USERNAME }}
+          username: clincha
           password: ${{ secrets.DOCKER_PASSWORD }}
           buildArgs: GH_PAT_TOKEN=${{ secrets.GH_PAT_TOKEN }}
 
