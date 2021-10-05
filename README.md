@@ -25,7 +25,7 @@ Commit and push to the build-agents repository.
 ### Adding more distributions
 I donno, I'll let you know when I get there ;)
 
-###Secrets
+### Secrets
 The following secrets need to be set in the build-agents GitHub repository:
 - DOCKER_PASSWORD (https://www.docker.com/)
 - GH_PAT_TOKEN (https://github.com/settings/tokens)
