@@ -7,7 +7,7 @@ echo "latest version of github runner is ${GITHUB_RUNNER_VERSION}"
 echo "installing github runner ${GITHUB_RUNNER_VERSION}"
 curl -Ls https://github.com/actions/runner/releases/download/v${GITHUB_RUNNER_VERSION}/actions-runner-linux-x64-${GITHUB_RUNNER_VERSION}.tar.gz | tar -zx
 echo "installing github runner dependencies"
-sudo ./bin/installdependencies.sh
+sh ./bin/installdependencies.sh
 echo "latest github runner has been successfully installed"
 
 registration_url="https://github.com/${GITHUB_OWNER}"
