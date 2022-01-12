@@ -1,11 +1,11 @@
 FROM debian:buster
 
 ARG GH_ACTIONS_RUNNER_VERSION=2.283.1
-ARG PACKAGES="gnupg2 apt-transport-https ca-certificates software-properties-common pwgen git make curl wget zip libicu-dev build-essential libssl-dev jq dos2unix"
+ARG PACKAGES="gnupg2 apt-transport-https ca-certificates software-properties-common pwgen git make curl wget zip libicu-dev build-essential libssl-dev jq dos2unix sudo"
 ARG GH_PAT_TOKEN
 ARG KUBECONFIG
 
-ENV GITHUB_PAT=${GH_PAT_TOKEN}
+ENV GITHUB_PAT=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
 
 # install basic stuff
 RUN apt-get update \
@@ -46,8 +46,6 @@ RUN useradd -d /runner --uid=1000 runner \
     && echo 'runner:runner' | chpasswd \
     && mkdir /runner \
     && chown -R runner:runner /runner
-
-USER runner
 
 WORKDIR /runner
 
