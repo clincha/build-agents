@@ -2,7 +2,7 @@
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
-  name: build-agent-runner
+  name: streaming-runner
 spec:
   replicas: 2
   template:
