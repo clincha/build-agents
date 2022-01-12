@@ -1,7 +1,7 @@
 FROM summerwind/actions-runner:latest
 
-RUN sudo apt update \
-    && apt install curl
+RUN sudo apt-get update \
+    && sudo apt-get install curl
 
 # install Kubernetes
 RUN curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
