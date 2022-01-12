@@ -22,7 +22,6 @@ jobs:
           directory: ubuntu
           username: clincha
           password: ${{ secrets.DOCKER_PASSWORD }}
-          buildArgs: GH_PAT_TOKEN=${{ secrets.GH_PAT_TOKEN }}
 
   deploy-agents-clinch-home:
     runs-on: self-hosted

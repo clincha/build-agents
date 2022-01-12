@@ -13,10 +13,10 @@ RUN sudo apt-get update \
 
 # install Ansible
 RUN sudo apt-get update \
-    && sudo apt-get install software-properties-common
+    && sudo apt-get install -y software-properties-common
 
 RUN sudo add-apt-repository --yes --update ppa:ansible/ansible
 
-RUN sudo apt-get install ansible
+RUN sudo apt-get install -y  ansible
 
 RUN sudo rm -rf /var/lib/apt/lists/*
