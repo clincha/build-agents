@@ -38,4 +38,4 @@ jobs:
           write-mode: overwrite
 
       - name: kubectl
-        run: kubectl apply -f ./deployments/ubuntu-runner-build-agents.yml --kubeconfig ./kubeconfig
+        run: kubectl apply -f ./deployments/ --kubeconfig ./kubeconfig

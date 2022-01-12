@@ -1,0 +1,12 @@
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: build-agent-runner
+spec:
+  replicas: 2
+  template:
+    spec:
+      repository: clincha/clinch-home
+      image: clincha/build-agent-ubuntu:latest
+      env: []
