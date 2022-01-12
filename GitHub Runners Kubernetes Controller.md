@@ -16,3 +16,5 @@ On Turing run the following commands against the Kubernetes cluster:
 I created a new App in github to use:
 
 https://github.com/settings/apps/self-hosted-kubernetes-runners
+
+Last thing was to make a new Dockerfile that the runners will use and create some deployments.
