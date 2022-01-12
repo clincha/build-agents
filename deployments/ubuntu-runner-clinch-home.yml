@@ -4,7 +4,7 @@ kind: RunnerDeployment
 metadata:
   name: clinch-home-runner
 spec:
-  replicas: 2
+  replicas: 6
   template:
     spec:
       repository: clincha/clinch-home
