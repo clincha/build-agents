@@ -8,4 +8,4 @@ spec:
   template:
     spec:
       repository: clincha/build-agents
-env: []
+      env: []
