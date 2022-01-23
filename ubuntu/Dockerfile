@@ -20,3 +20,6 @@ RUN sudo add-apt-repository --yes --update ppa:ansible/ansible
 RUN sudo apt-get install -y  ansible
 
 RUN sudo rm -rf /var/lib/apt/lists/*
+
+# Install Galaxy roles
+RUN ansible-galaxy install adriagalin.motd
