@@ -1,0 +1,12 @@
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: starsheet-runner
+spec:
+  replicas: 2
+  template:
+    spec:
+      repository: clincha/StarSheet
+      image: clincha/build-agent-ubuntu:latest
+      env: []

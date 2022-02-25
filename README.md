@@ -13,10 +13,11 @@ The best place to start looking is in
 The deployments folder has customised deployments for each repository that uses agents. The structure for a filename goes `distro-repository.yml` so that `ubuntu-build-agents.yml` is the filename for this repositories build agents.
 
 ### Adding more repositories
-Copy an existing deployment's YAML file and replace these environment variables:
-- GH_REPOSITORY
-- GITHUB_OWNER
-- GITHUB_REPOSITORY
+Copy an existing deployment's YAML file and replace these variables:
+    
+    metadata.name
+    spec.template.spe.repository
+
 
 Replace all instances of the existing deployments name with a name for the new deployment (see above for naming convention).
 
